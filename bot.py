@@ -34,6 +34,7 @@ import config
 import database as db
 import messages as msg
 import rate_limiter as rl
+import keep_alive
 from keyboards import (
     main_menu_keyboard,
     menu_without_contact,
@@ -1038,6 +1039,9 @@ def build_application() -> Application:
 def main() -> None:
     """Botni ishga tushiradi"""
     db.init_db()
+
+    # Render.com va bulutli xostinglar uchun veb-serverni ishga tushirish (Sleep modega tushmaslik uchun)
+    keep_alive.start_keep_alive()
 
     app = build_application()
 

@@ -1,0 +1,32 @@
+# Muhit o'zgaruvchilari va maxfiy kalitlar (ENG MUHIM!)
+.env
+.env.local
+
+# SQLite Ma'lumotlar bazasi
+*.db
+*.sqlite3
+support_bot.db
+
+# Python bytecode va keshlar
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual muhit (venv)
+venv/
+env/
+.venv/
+ENV/
+
+# IDE va muharrir sozlamalari
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Log fayllar
+*.log
+
+# Operatsion tizim fayllari
+.DS_Store
+Thumbs.db
