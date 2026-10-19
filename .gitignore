@@ -1,6 +1,7 @@
 # Muhit o'zgaruvchilari va maxfiy kalitlar (ENG MUHIM!)
 .env
 .env.local
+.env.example
 
 # SQLite Ma'lumotlar bazasi
 *.db
