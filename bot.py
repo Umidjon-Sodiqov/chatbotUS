@@ -1070,4 +1070,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    import asyncio
+    # Python 3.12+ da asyncio.get_event_loop() avtomatik loop yaratmaydi.
+    # PTB run_polling() ichida get_event_loop() ishlatadi — shuning uchun
+    # oldindan yangi loop yaratib, uni joriy thread ga o'rnatamiz.
+    asyncio.set_event_loop(asyncio.new_event_loop())
     main()
