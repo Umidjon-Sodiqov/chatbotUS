@@ -30,6 +30,17 @@ ENABLE_RATE_LIMIT: bool = False  # Vaqtincha o'chirilgan (yoqish uchun True qili
 RATE_LIMIT_MAX: int = int(os.getenv("RATE_LIMIT_MAX", "5"))   # max xabar soni
 RATE_LIMIT_SEC: int = int(os.getenv("RATE_LIMIT_SEC", "60"))  # oyna (soniya)
 
+# ─── Render.com self-ping (sleep modega tushmaslik uchun) ─────────────────────
+
+# Render tomonidan berilgan URL (masalan: https://my-bot.onrender.com)
+# Bo'sh qolsa, self-ping ishlamaydi (mahalliy ishga tushirishda kerak emas)
+RENDER_URL: str = os.getenv("RENDER_URL", "")
+
+# Ping oralig'i soniyada (default: 600 = 10 daqiqa)
+# Render bepul rejimda 15 daqiqa faoliyat bo'lmasa sleep ga tushadi,
+# shuning uchun 10 daqiqa yetarli
+SELF_PING_INTERVAL: int = int(os.getenv("SELF_PING_INTERVAL", "600"))
+
 # ─── Validatsiya ──────────────────────────────────────────────────────────────
 
 if not BOT_TOKEN:

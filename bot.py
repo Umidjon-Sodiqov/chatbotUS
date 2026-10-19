@@ -1043,6 +1043,17 @@ def main() -> None:
     # Render.com va bulutli xostinglar uchun veb-serverni ishga tushirish (Sleep modega tushmaslik uchun)
     keep_alive.start_keep_alive()
 
+    # Self-ping: bot o'ziga-o'zi so'rov yuboradi (tashqi servis shart emas)
+    if config.RENDER_URL:
+        keep_alive.start_self_ping(config.RENDER_URL, config.SELF_PING_INTERVAL)
+        logger.info(
+            "Self-ping yoqildi | Har %s daqiqada %s ga ping",
+            config.SELF_PING_INTERVAL // 60,
+            config.RENDER_URL,
+        )
+    else:
+        logger.info("Self-ping o'chirilgan (RENDER_URL .env da yo'q)")
+
     app = build_application()
 
     logger.info("Bot ishga tushdi | Admin ID: %s", config.ADMIN_ID)
@@ -1050,6 +1061,7 @@ def main() -> None:
     rl_info = f"{config.RATE_LIMIT_MAX} xabar / {config.RATE_LIMIT_SEC}s" if config.ENABLE_RATE_LIMIT else "O'chirilgan (Disabled)"
     logger.info("Rate limit: %s", rl_info)
     logger.info("To'xtatish uchun: Ctrl+C")
+
 
     app.run_polling(
         allowed_updates=Update.ALL_TYPES,
